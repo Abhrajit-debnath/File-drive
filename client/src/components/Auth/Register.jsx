@@ -32,37 +32,34 @@ const Register = ({ registerData }) => {
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
-  
+
     try {
       const response = await axios.post('/users/register', data, {
         headers: {
           'Content-Type': 'application/json',
         },
       });
-  
+
       if (response.status === 200) {
         toast.success('Account registered successfully!');
         setErrors([]);
       } else {
-        setErrors(response.data.errors);
-        toast.error('Registration Failed');
+        setErrors(response.data.errors || [{ msg: 'Registration failed. Please try again.' }]);
+        toast.error(response.data.message || 'Registration Failed');
       }
     } catch (error) {
-      toast.error('Invalid Inputs. Please try again.');
-      if (error.response && error.response.data) {
-        setErrors(error.response.data.errors);
-      } else {
-        setErrors([{ msg: 'An unknown error occurred' }]);
-      }
+      console.error('Error:', error);
+      setErrors(error.response?.data.errors || [{ msg: 'An unknown error occurred' }]);
+      toast.error(error.response?.data.message || 'Invalid Inputs. Please try again.');
     }
     e.target.reset();
   };
-  
+
+
 
   return (
     <div className="login h-screen w-screen">
