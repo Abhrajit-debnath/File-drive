@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import '@/index.css';
 import { useNavigate } from 'react-router-dom';
 import Splashscreen from './Splashscreen';
+import axios from "axios";
 
 const Register = ({ registerData }) => {
   const navigate = useNavigate();
