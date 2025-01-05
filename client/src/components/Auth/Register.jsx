@@ -3,10 +3,11 @@ import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { toast } from 'react-toastify';
 import '@/index.css';
-import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import Splashscreen from './Splashscreen';
 
 const Register = ({ registerData }) => {
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState([]);
   const [showSplash, setShowSplash] = useState(false);
