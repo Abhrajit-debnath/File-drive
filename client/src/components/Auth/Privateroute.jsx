@@ -10,7 +10,7 @@ const PrivateRoute = ({ children }) => {
   if (isAuthenticated) {
     return children;
   } else {
-    return <Navigate to="/home" replace />;
+    return <Navigate to="/login" replace />;
   }
 };
 
