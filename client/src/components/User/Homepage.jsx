@@ -84,8 +84,6 @@ const Homepage = () => {
     }
   };
 
-
-
   const handleLogin = () => navigate("/login");
   const handleUpload = () => navigate("/upload");
   const handleRegister = () => navigate("/register");

@@ -72,6 +72,7 @@ const Login = ({ loginData }) => {
       }
     }
     e.target.reset();
+    navigate('/home');
   };
 
   return (
