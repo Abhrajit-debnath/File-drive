@@ -37,20 +37,20 @@ const Register = ({ registerData }) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
-
+  
     try {
       const response = await axios.post('/users/register', data, {
         headers: {
           'Content-Type': 'application/json',
         },
       });
-
-      if (response.status !== 200) {
+  
+      if (response.status === 200) {
+        toast.success('Account registered successfully!');
+        setErrors([]);
+      } else {
         setErrors(response.data.errors);
         toast.error('Registration Failed');
-      } else {
-        setErrors([]);
-        toast.success('Account registered successfully!');
       }
     } catch (error) {
       toast.error('Invalid Inputs. Please try again.');
@@ -62,6 +62,7 @@ const Register = ({ registerData }) => {
     }
     e.target.reset();
   };
+  
 
   return (
     <div className="login h-screen w-screen">
