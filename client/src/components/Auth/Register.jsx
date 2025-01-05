@@ -61,7 +61,6 @@ const Register = ({ registerData }) => {
       }
     }
     e.target.reset();
-    navigate('/login');
   };
 
   return (
